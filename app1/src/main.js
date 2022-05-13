@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router'
+import store from './store'
 
 import './public-path'
 
@@ -21,6 +22,7 @@ function render (props = {}) {
 
   instance = new Vue({
     router,
+    store,
     render: h => h(App)
   }).$mount(container ? container.querySelector('#app') : '#app')
 }
@@ -32,9 +34,11 @@ if (!window.__POWERED_BY_QIANKUN__) {
 export async function bootstrap () {}
 
 export async function mount (props) {
+  console.log('app1.localStorage', localStorage.getItem('user'))
   props.onGlobalStateChange((state, prev) => {
     // state: 变更后的状态; prev 变更前的状态
     console.log('app1.onGlobalStateChange', state, prev)
+    store.dispatch('user/loginUser', state)
   })
   // props.setGlobalState({
   //   hhh: '123'

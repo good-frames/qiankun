@@ -30,6 +30,14 @@ if (!window.__POWERED_BY_QIANKUN__) {
 export async function bootstrap () {}
 
 export async function mount (props) {
+  console.log('app2.localStorage', localStorage.getItem('user'))
+  props.onGlobalStateChange((state, prev) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log('app2.onGlobalStateChange', state, prev)
+  })
+  // props.setGlobalState({
+  //   hhh: '123'
+  // })
   render(props)
 }
 

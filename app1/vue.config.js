@@ -12,20 +12,20 @@ module.exports = {
   devServer: {
     port: '7100',
     headers: {
-        'Access-Control-Allow-Origin': '*',
-    },
+      'Access-Control-Allow-Origin': '*'
+    }
   },
   configureWebpack: {
     resolve: {
       alias: {
-        '@': resolve('src'),
-      },
+        '@': resolve('src')
+      }
     },
     output: {
       // 把子应用打包成 umd 库格式
-      library: `${name}`,  // 库名称，唯一
+      library: `${name}`, // 库名称，唯一
       libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_${name}`,
-    },
-  },
+      jsonpFunction: `webpackJsonp_${name}`
+    }
+  }
 }
